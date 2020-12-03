@@ -1,33 +1,36 @@
-var ol;
-var circleInterval;
-var clicked = false;
+var canvas = document.getElementById('animated-canvas');
+var context = canvas.getContext('2d');
+var canvasInterval = requestAnimationFrame(canvasAnimation);
+var circleX = 0;
+var circleY;
+var velocity = 1;
+var acceleration = 0.2;
 
-function cricleAnimation(time) {
 
-    ol = Math.floor(Math.random() * -1000) + 1000
-
-    if (ol >= 100) {
-        document.getElementById("circle").style.top = ol + "px";
-    }
-    else {
-        document.getElementById("circle").style.bottom = ol + "px";
-    }
-
-    circleInterval = requestAnimationFrame(cricleAnimation)
-
+function canvasAnimation(){
+    circleX++;
+    circleY = Math.floor(Math.random() * (150)) + 150
+    drawCircle(circleX, circleY, 25);
+    canvasInterval = requestAnimationFrame(canvasAnimation);
 }
 
-function mouseClicked() {
-    if (clicked) {
-        clicked = false;
-        document.getElementById("circle").style.backgroundColor = "dimgrey";
-        cancelAnimationFrame(circleInterval)
-    } else {
-        clicked = true;
-        document.getElementById("circle").style.backgroundColor = "crimson";
-        circleInterval = requestAnimationFrame(cricleAnimation)
+function drawCircle(x, y, s){
+    context.globalCompositeOperation = "different"
+    clearCanvas()
+    context.fillStyle = "crimson";
+    context.beginPath();
+    context.arc(x, y, s, 0, 2 * Math.PI);
+    context.fill();
+    velocity += acceleration;
+    circleX += velocity;
+    if(circleX > canvas.width){
+        circleX = 0;
+        velocity = 1;
     }
 }
 
-document.getElementById("circle").addEventListener("click", mouseClicked);
-document.getElementById("circle").style.backgroundColor = "dimgrey";
+function clearCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+drawCircle();
