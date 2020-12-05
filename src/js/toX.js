@@ -1,27 +1,27 @@
 var canvas = document.getElementById('animated-canvas');
-var ctx = canvas.getContext('2d');
-var canvasInterval = requestAnimationFrame(canvasAnimation);
-var circleX = 0;
+var toX_ctx = canvas.getContext('2d');
+var canvasInterval = requestAnimationFrame(toX_canvasAnimation);
+var toX_circleX = 0;
 
-function canvasAnimation(){
-    circleX++;
-    drawCircle(circleX, canvas.height/2, 10);
-    canvasInterval = requestAnimationFrame(canvasAnimation);
+function toX_canvasAnimation(){
+    toX_circleX++;
+    toX_drawCircle(toX_circleX, canvas.height/2, 10);
+    canvasInterval = requestAnimationFrame(toX_canvasAnimation);
 }
 
-function drawCircle(x, y, s){
-    clearCanvas()
-    ctx.fillStyle = "crimson";
-    ctx.beginPath();
-    ctx.arc(x, y, s, 0, 2 * Math.PI);
-    ctx.fill();
-    if(circleX > canvas.width * 1.1){
-        circleX = 0;
+function toX_drawCircle(x, y, s){
+    toX_clearCanvas()
+    toX_ctx.fillStyle = "crimson";
+    toX_ctx.beginPath();
+    toX_ctx.arc(x, y, s, 0, 2 * Math.PI);
+    toX_ctx.fill();
+    if(toX_circleX > canvas.width * 1.1){
+        toX_circleX = 0;
     }
 }
 
-function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function toX_clearCanvas() {
+    toX_ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-drawCircle();
+toX_drawCircle();
