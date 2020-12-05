@@ -10,7 +10,11 @@ body {
  
 }
 
-canvas {
+#stack {
+  position: relative;
+}
+
+#stack > canvas {
   margin: 20px;
   border: 4px solid crimson;
 }
