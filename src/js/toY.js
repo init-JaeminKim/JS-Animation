@@ -1,4 +1,4 @@
-var canvas = document.getElementById('animated-canvas2');
+var canvas = document.getElementById('toY');
 var toY_ctx = canvas.getContext('2d');
 var canvasInterval = requestAnimationFrame(toY_canvasAnimation);
 var toY_circleY = 0;

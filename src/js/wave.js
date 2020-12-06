@@ -1,4 +1,4 @@
-var canvas = document.getElementById('animated-canvas3');
+var canvas = document.getElementById('wave');
 var wave_ctx = canvas.getContext('2d');
 var canvasInterval = requestAnimationFrame(wave_canvasAnimation);
 var wave_circleX = 0;
