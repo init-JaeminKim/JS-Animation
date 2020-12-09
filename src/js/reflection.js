@@ -1,8 +1,8 @@
 var canvas = document.getElementById('reflection');
 var rflx_ctx = canvas.getContext('2d');
 var canvasInterval = requestAnimationFrame(rflx_canvasAnimation);
-var rflx_circleX = (Math.random() * 10) + 50;
-var rflx_circleY = (Math.random() * 10) + 50;
+var rflx_circleX = (Math.random() * 100);
+var rflx_circleY = (Math.random() * 100);
 var rflx_dX = 1;
 var rflx_dY = -1;
 var rflx_gravity = 0.03
@@ -50,8 +50,8 @@ function rflx_drawCircle(x, y, s) {
     // reset insignificant amounts to 0
     if (rflx_dX < 0.01 && rflx_dX > -0.01) {
         rflx_dX = 0
-        rflx_circleX = canvas.width / 2
-        rflx_circleY = (Math.random() * 10) + 50;
+        rflx_circleX = (Math.random() * 100);
+        rflx_circleY = (Math.random() * 100);
         rflx_dX = 1;
         rflx_dY = -1;
         rflx_gravity = 0.03;
