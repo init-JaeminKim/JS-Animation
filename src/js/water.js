@@ -30,17 +30,16 @@ function drawWater() {
     for (X_water = 0; X_water < canvas.width * 1.1; X_water++) {
 
         Y_water = canvas.height / 2 +
-            30 * sin(t_water) * cos(X_water / 60) -
-            30 * cos(t_water) * sin(X_water / 58)
-
+            30 * sin(t_water) * cos(X_water / 60) +
+            15 * cos(t_water * 1.3) * sin(X_water / 58)
 
         ctx_water.beginPath();
         ctx_water.moveTo(X0_water, Y0_water);
         ctx_water.lineTo(X_water, Y_water);
 
         ctx_water.closePath();
+        ctx_water.fillRect(X0_water, Y_water, canvas.width / 40, canvas.height)
         ctx_water.fillStyle = "crimson"
-        ctx_water.fill()
         ctx_water.strokeStyle = "crimson";
         ctx_water.lineWidth = 5;
 
