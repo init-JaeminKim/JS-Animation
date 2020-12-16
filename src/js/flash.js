@@ -17,9 +17,9 @@ var front_space = [[20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [
 function generateRare_space() {
 
 
-    for (var i = 0; i < 15; i++) {
-        var x = Math.floor(Math.random() * 170) + 30;
-        var y = Math.floor(Math.random() * 170) + 30;
+    for (var i = 0; i < 10; i++) {
+        var x = Math.floor(Math.random() * -200) + 0;
+        var y = Math.floor(Math.random() * 200);
 
         rare_space.push([x, y]);
 
@@ -27,30 +27,35 @@ function generateRare_space() {
 }
 
 function canvasAnimation_space() {
-    circleX_space++;
-    circleY_space;
 
-    drawCircle_space(circleX_space, circleY_space, 3);
+    drawCircle_space();
+
+    canvasInterval = requestAnimationFrame(canvasAnimation_space);
+
 
 }
 
-function drawCircle_space(x, y, s) {
-    generateRare_space();
-    ctx_space.fillStyle = "rgba(220, 20, 60, 0.5)";
+function drawCircle_space() {
+    var r;
+    clearCanvas_space();
+    ctx_space.fillStyle = "rgba(220, 20, 60, 0.3)";
     ctx_space.beginPath();
     for (var i = 0; i < rare_space.length; i++) {
+        r = (Math.random() * 0.1) + 0.5;
         ctx_space.moveTo(rare_space[i][0], rare_space[i][1]);
-        ctx_space.arc(rare_space[i][0], rare_space[i][1], 3, 0, Math.PI * 2, true);
+        ctx_space.arc(rare_space[i][0] += r, rare_space[i][1], 3, 0, Math.PI * 2, true);
     }
     ctx_space.fill();
 
-    if (circleX_space > canvas.width * 1.1) {
-        circleX_space = 0;
-    }
+
 }
 
 function clearCanvas_space() {
     ctx_space.clearRect(0, 0, canvas.width, canvas.height);
 }
+
+setInterval(() => {
+    generateRare_space()
+}, 5000);
 
 drawCircle_space();
