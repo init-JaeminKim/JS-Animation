@@ -1,33 +1,56 @@
 var canvas = document.getElementById('flash');
-var ctx_flash = canvas.getContext('2d');
-var canvasInterval = requestAnimationFrame(canvasAnimation_flash);
-var circleX_flash = 0;
-var circleY_flash = canvas.height / 2;
-var amplitude_flash = 30;
-var frequency_flash = 15;
+var ctx_space = canvas.getContext('2d');
+var canvasInterval = requestAnimationFrame(canvasAnimation_space);
+var circleX_space = 0;
+var circleY_space = canvas.height / 2;
+var amplitude_space = 30;
+var frequency_space = 15;
+
+var mBall_X = 0;
+var mBall_Y = 0;
+
+var rare_space = [];
+var middle_space = [[20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40]];
+var front_space = [[20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40], [20, 40]];
 
 
-function canvasAnimation_flash() {
-    circleX_flash++;
-    circleY_flash = canvas.height / 2 + amplitude_flash * Math.cos(circleX_flash / frequency_flash);
+function generateRare_space() {
 
-    drawCircle_flash(circleX_flash, circleY_flash, 10);
-    canvasInterval = requestAnimationFrame(canvasAnimation_flash);
-}
 
-function drawCircle_flash(x, y, s) {
-    clearCanvas_flash()
-    ctx_flash.fillStyle = "rgba(220, 20, 60, 0.5)";
-    ctx_flash.beginPath();
-    ctx_flash.arc(x, y, s, 0, 2 * Math.PI);
-    ctx_flash.fill();
+    for (var i = 0; i < 15; i++) {
+        var x = Math.floor(Math.random() * 170) + 30;
+        var y = Math.floor(Math.random() * 170) + 30;
 
-    if (circleX_flash > canvas.width * 1.1) {
-        circleX_flash = 0;
+        rare_space.push([x, y]);
+
     }
 }
 
-function clearCanvas_flash() {
-    ctx_flash.clearRect(0, 0, canvas.width, canvas.height);
+function canvasAnimation_space() {
+    circleX_space++;
+    circleY_space;
+
+    drawCircle_space(circleX_space, circleY_space, 3);
+
 }
-drawCircle_flash();
+
+function drawCircle_space(x, y, s) {
+    generateRare_space();
+    ctx_space.fillStyle = "rgba(220, 20, 60, 0.5)";
+    ctx_space.beginPath();
+    for (var i = 0; i < rare_space.length; i++) {
+        ctx_space.moveTo(rare_space[i][0], rare_space[i][1]);
+        ctx_space.arc(rare_space[i][0], rare_space[i][1], 3, 0, Math.PI * 2, true);
+    }
+    ctx_space.fill();
+
+    if (circleX_space > canvas.width * 1.1) {
+        circleX_space = 0;
+    }
+}
+
+function clearCanvas_space() {
+    ctx_space.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+drawCircle_space();
