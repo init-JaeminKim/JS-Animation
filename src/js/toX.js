@@ -15,7 +15,7 @@ function toX_drawCircle(x, y, s){
     toX_ctx.beginPath();
     toX_ctx.arc(x, y, s, 0, 2 * Math.PI);
     toX_ctx.fill();
-    if(toX_circleX > canvas.width * 1.1){
+    if(toX_cwircleX > canvas.width * 1.1){
         toX_circleX = 0;
     }
 }
