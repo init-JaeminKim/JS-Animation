@@ -43,7 +43,7 @@ function update() {
     clearCanvas_cursor();
     ctx_cursor.beginPath();
     ctx_cursor.arc(mouseX, mouseY, 10, 0, 2 * Math.PI, true);
-    ctx_cursor.fillStyle = "#FF6A6A";
+    ctx_cursor.fillStyle = "crimson";
     ctx_cursor.fill();
 
     requestAnimationFrame(update);
