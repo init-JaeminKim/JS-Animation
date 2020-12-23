@@ -6,11 +6,14 @@ var canvasPos = getPosition(canvas);
 var mouseX = 0;
 var mouseY = 0;
 
+var img = new Image();
+img.src = "./src/images/imposter.png"
+
 canvas.addEventListener("mousemove", setMousePosition, false);
 
 function setMousePosition(e) {
     mouseX = e.clientX - canvasPos.x;
-    mouseY = e.clientY -canvasPos.y;
+    mouseY = e.clientY - canvasPos.y;
 }
 
 function getPosition(el) {
@@ -41,10 +44,8 @@ function clearCanvas_cursor() {
 function update() {
 
     clearCanvas_cursor();
-    ctx_cursor.beginPath();
-    ctx_cursor.arc(mouseX, mouseY, 10, 0, 2 * Math.PI, true);
-    ctx_cursor.fillStyle = "crimson";
-    ctx_cursor.fill();
+    ctx_cursor.drawImage(img, mouseX, mouseY, 50, 50);
+
 
     requestAnimationFrame(update);
 }
