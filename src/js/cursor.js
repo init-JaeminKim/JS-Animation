@@ -3,8 +3,8 @@ var ctx_cursor = canvas.getContext('2d');
 var canvasInterval = requestAnimationFrame(update);
 
 var canvasPos = getPosition(canvas);
-var mouseX = 0;
-var mouseY = 0;
+var mouseX_cursor = 0;
+var mouseY_cursor = 0;
 
 var img = new Image();
 img.src = "./src/images/imposter.png"
@@ -12,8 +12,8 @@ img.src = "./src/images/imposter.png"
 canvas.addEventListener("mousemove", setMousePosition, false);
 
 function setMousePosition(e) {
-    mouseX = e.clientX - canvasPos.x;
-    mouseY = e.clientY - canvasPos.y;
+    mouseX_cursor = e.clientX - canvasPos.x;
+    mouseY_cursor = e.clientY - canvasPos.y;
 }
 
 function getPosition(el) {
@@ -44,7 +44,7 @@ function clearCanvas_cursor() {
 function update() {
 
     clearCanvas_cursor();
-    ctx_cursor.drawImage(img, mouseX, mouseY, 50, 50);
+    ctx_cursor.drawImage(img, mouseX_cursor, mouseY_cursor, 50, 50);
 
 
     requestAnimationFrame(update);
