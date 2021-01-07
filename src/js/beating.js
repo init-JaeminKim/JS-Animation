@@ -1,20 +1,20 @@
 var canvas = document.getElementById('beating');
 var ctx_beating = canvas.getContext('2d');
 var canvasInterval = requestAnimationFrame(canvasAnimation_beating);
-var radius_beating = 10;
+var radius_beating = 20;
 var isFull_beating = false;
 
 function canvasAnimation_beating() {
 
     if(!isFull_beating){
-        radius_beating+=2;
-        if(radius_beating == 30){
+        radius_beating+=4;
+        if(radius_beating == 40){
             isFull_beating = true;
         }
     }
     else if(isFull_beating){
-        radius_beating--;
-        if(radius_beating == 10){
+        radius_beating -= 0.5;
+        if(radius_beating == 20){
             isFull_beating = false;
         }
     }
