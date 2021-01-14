@@ -5,24 +5,24 @@ var wavelength_circleX = canvas.width / 2;
 var wavelength_circleY = canvas.height / 2
 var wavelength_radius = 0
 var wavelength_flag = false
-var wavelength_palette = ['orange', 'green', 'yello', 'purple', 'black']
+var wavelength_palette = ['#AC92EB', '#4FC1E8', '#A0D568', '#FFCE54', '#ED5564']
 
 
 function wavelength_colorPick(){
-    return Math.floor(Math.random()*10);
+    return Math.floor(Math.random()*6);
 }
 
 function wavelength_canvasAnimation() {
 
     if(!wavelength_flag){
-        wavelength_radius+=1;
-        if(wavelength_radius == 130){
+        wavelength_radius+=5;
+        if(wavelength_radius === 130){
             wavelength_flag = true;
         }
     }
     else if(wavelength_flag){
         wavelength_radius -= 0.5;
-        if(wavelength_radius == 0){
+        if(wavelength_radius <= 0){
             wavelength_flag = false;
         }
     }
@@ -39,16 +39,19 @@ function wavelength_drawCircle(x, y, s) {
     ctx_wavelength.arc(x, y, s, 0, 2 * Math.PI);
     ctx_wavelength.fill();
     ctx_wavelength.lineWidth = (Math.random() * 20) + 1
-    ctx_wavelength.strokeStyle = "yellow"
+    ctx_wavelength.strokeStyle = "#AC92EB"
     ctx_wavelength.stroke();
     ctx_wavelength.lineWidth = (Math.random() * 20) + 1
-    ctx_wavelength.strokeStyle = "green"
+    ctx_wavelength.strokeStyle = "#4FC1E8"
     ctx_wavelength.stroke();
     ctx_wavelength.lineWidth = (Math.random() * 20) + 1
-    ctx_wavelength.strokeStyle = "purple"
+    ctx_wavelength.strokeStyle = "#A0D568"
     ctx_wavelength.stroke();
     ctx_wavelength.lineWidth = (Math.random() * 20) + 1
-    ctx_wavelength.strokeStyle = "black"
+    ctx_wavelength.strokeStyle = "#FFCE54"
+    ctx_wavelength.stroke();
+    ctx_wavelength.lineWidth = (Math.random() * 20) + 1
+    ctx_wavelength.strokeStyle = "#ED5564"
     ctx_wavelength.stroke();
 
 
